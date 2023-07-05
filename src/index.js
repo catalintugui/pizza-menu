@@ -9,6 +9,7 @@ const pizzaData = [
     price: 6,
     photoName: "pizzas/focaccia.jpg",
     soldOut: false,
+    id: 1,
   },
   {
     name: "Pizza Margherita",
@@ -16,6 +17,7 @@ const pizzaData = [
     price: 10,
     photoName: "pizzas/margherita.jpg",
     soldOut: false,
+    id: 2,
   },
   {
     name: "Pizza Spinaci",
@@ -23,6 +25,7 @@ const pizzaData = [
     price: 12,
     photoName: "pizzas/spinaci.jpg",
     soldOut: false,
+    id: 3,
   },
   {
     name: "Pizza Funghi",
@@ -30,6 +33,7 @@ const pizzaData = [
     price: 12,
     photoName: "pizzas/funghi.jpg",
     soldOut: false,
+    id: 4,
   },
   {
     name: "Pizza Salamino",
@@ -37,6 +41,7 @@ const pizzaData = [
     price: 15,
     photoName: "pizzas/salamino.jpg",
     soldOut: true,
+    id: 5,
   },
   {
     name: "Pizza Prosciutto",
@@ -44,6 +49,7 @@ const pizzaData = [
     price: 18,
     photoName: "pizzas/prosciutto.jpg",
     soldOut: false,
+    id: 6,
   },
 ];
 
@@ -68,13 +74,34 @@ function Header() {
 function Menu() {
   return (
     <main className="menu">
-      <Pizza />
+      {pizzaData.map((pizza) => {
+        return (
+          <Pizza
+            key={pizza.id}
+            name={pizza.name}
+            ingredients={pizza.ingredients}
+            photoName={pizza.photoName}
+            price={pizza.price}
+          />
+        );
+      })}
     </main>
   );
 }
 
-function Pizza() {
-  return <div>pizza</div>;
+function Pizza(props) {
+  const { name, ingredients, photoName, price } = props;
+
+  return (
+    <div className="pizza">
+      <img src={photoName} alt={name} />
+      <div>
+        <h3>{name}</h3>
+        <p>{ingredients}</p>
+        <span>{price}</span>
+      </div>
+    </div>
+  );
 }
 
 function Footer() {
