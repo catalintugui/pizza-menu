@@ -77,7 +77,7 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      {pizzasLength && (
+      {pizzasLength ? (
         <ul className="pizzas">
           {pizzaData.map((pizza) => {
             return (
@@ -91,6 +91,8 @@ function Menu() {
             );
           })}
         </ul>
+      ) : (
+        <p>Working on our menu, come back later :)</p>
       )}
     </main>
   );
@@ -113,19 +115,23 @@ function Pizza(props) {
 
 function Footer() {
   const hour = new Date().getHours();
-  const openingHour = 0;
+  const openingHour = 12;
   const closingHour = 22;
   const isOpen = hour >= openingHour && hour <= closingHour;
 
   return (
     <footer className="footer">
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>
             We're open until {closingHour}:00, come visit us or order online.
           </p>
           <button className="btn">Order</button>
         </div>
+      ) : (
+        <p>
+          We're open between {openingHour}:00 and {closingHour}:00
+        </p>
       )}
     </footer>
   );
