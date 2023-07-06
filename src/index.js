@@ -74,17 +74,19 @@ function Header() {
 function Menu() {
   return (
     <main className="menu">
-      {pizzaData.map((pizza) => {
-        return (
-          <Pizza
-            key={pizza.id}
-            name={pizza.name}
-            ingredients={pizza.ingredients}
-            photoName={pizza.photoName}
-            price={pizza.price}
-          />
-        );
-      })}
+      <div>
+        {pizzaData.map((pizza) => {
+          return (
+            <Pizza
+              key={pizza.id}
+              name={pizza.name}
+              ingredients={pizza.ingredients}
+              photoName={pizza.photoName}
+              price={pizza.price}
+            />
+          );
+        })}
+      </div>
     </main>
   );
 }
